@@ -1,6 +1,10 @@
 # Ganti Domain
 
-Script untuk mengganti domain dengan mudah.
+Script untuk mengganti domain di file-file web, serta mengirimkan notifikasi melalui Telegram ketika proses selesai.
+
+## Deskripsi
+
+Script ini digunakan untuk mengganti domain lama (`OLD_DOMAIN`) dengan domain baru (`NEW_DOMAIN`) pada file-file web yang ada di direktori tertentu. Script ini akan mencari file dengan ekstensi `.html`, `.js`, `.css`, dan `.php` di dalam direktori yang sudah ditentukan, kemudian mengganti semua kemunculan domain lama dengan domain baru. Setelah proses selesai, script akan mengirimkan notifikasi ke Telegram untuk memberi tahu bahwa proses penggantian domain telah selesai.
 
 ## Cara Penggunaan
 
@@ -19,16 +23,28 @@ Script untuk mengganti domain dengan mudah.
     nano ganti-domain.sh
     ```
 
-4. **Ubah permission** agar script bisa dijalankan:
+4. **Ubah variabel-variabel berikut** di dalam script sesuai dengan kebutuhan kamu:
+    ```bash
+    OLD_DOMAIN="contoh.com"        # Ganti dengan domain lama
+    NEW_DOMAIN="hokireceh.fun"     # Ganti dengan domain baru
+    TARGET_DIR="/www/wwwroot/contoh.com"  # Ganti dengan path direktori yang ingin kamu ganti domainnya
+    BOT_TOKEN="123456789:ABCDEFghijklMNOpqrstuvwxyz"  # Ganti dengan token bot Telegram kamu
+    CHAT_ID="123456789"           # Ganti dengan ID Telegram kamu
+    ```
+
+5. **Ubah permission** agar script bisa dijalankan:
     ```bash
     chmod +x ganti-domain.sh
     ```
 
-5. **Jalankan script**:
+6. **Jalankan script**:
     ```bash
     ./ganti-domain.sh
     ```
 
-## Catatan
+## Penjelasan Kode
 
-Pastikan Anda sudah melakukan konfigurasi yang diperlukan sebelum menjalankan script ini.
+Berikut adalah penjelasan tentang apa yang dilakukan oleh script `ganti-domain.sh`:
+
+```bash
+#!/bin/bash
